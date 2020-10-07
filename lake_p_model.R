@@ -27,7 +27,7 @@ initial <- c(Phyto_P_Pool = 5, #Whole lake phytoplantion P pool
 
 #Time steps (unit month)
 #Define model time step change (dt) and maximum number of time steps when running the model (tmax)
-dt <- 0.5
+dt <- 0.25
 tmax <- 100
 
 #Sequence of timesteps
@@ -45,14 +45,15 @@ plot(output)
 output_df <- data.frame(output)
 
 #Plot time interval (first year) and select variables
-output_df_zoom <- output_df[1:24, c("Phyto_P_Pool", "Water_P_Pool", "Sediment_P_Pool", "Zoo_P_Pool")]
+output_df_zoom <- output_df[1:48, c("Phyto_P_Pool", "Water_P_Pool", "Sediment_P_Pool", "Zoo_P_Pool")]
 
 dev.off()
-matplot(output_df_zoom, lty = 1, type = "l")
-legend("topright",
+matplot(output_df_zoom, lty = 1, type = "l", main = "Modeled lake P pools over time", xlab = "Time (months)", ylab = "Lake P pools (kg P)")
+legend("right",
        names(output_df_zoom),
        col = 1:length(names(output_df_zoom)),
-       lty = 1)
+       lty = 1,
+       xpd=TRUE)
 
 #Create interactive plot
 dev.off()
