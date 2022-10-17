@@ -1,14 +1,16 @@
 ###### HELPER FUNCTIONS ###### 
 #Model reuires deSolve package, check for existence and install if missing
 
-if(require(deSolve) == FALSE){
+if(require("deSolve") == FALSE){
   install.packages('deSolve')
 }
 
-if(require(deSolve) == FALSE){
-  print("Error: deSolve package is not installed on your machine")
-  print("Ask for help!")
+if(require("plotly") == FALSE){
+  install.packages('plotly')
 }
+
+library(deSolve)
+library(plotly)
 
 #Combine input data in list for the model
 InputData <- c("PhytoLightLimitation" = list(PhytoLightLimitation), 
